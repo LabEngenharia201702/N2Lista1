@@ -11,8 +11,4 @@ package ex6;
  */
 public class Cabecalho extends Decoracao {
     
-    public Cabecalho(Componente componente) {
-        super(componente);
-    }
-    
 }

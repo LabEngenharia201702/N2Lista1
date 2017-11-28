@@ -11,8 +11,4 @@ package ex6;
  */
 public class Rodape extends Decoracao{
     
-    public Rodape(Componente componente) {
-        super(componente);
-    }
-    
 }
