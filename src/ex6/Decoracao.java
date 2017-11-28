@@ -9,7 +9,21 @@ package ex6;
  *
  * @author diego
  */
-public abstract class Decoracao {
-    Componente componente;
+public abstract class Decoracao extends Componente{
+    private Componente componente;
+
+    /**
+     * @return the componente
+     */
+    public Componente getComponente() {
+        return componente;
+    }
+
+    /**
+     * @param componente the componente to set
+     */
+    public void setComponente(Componente componente) {
+        this.componente = componente;
+    }
     
 }
