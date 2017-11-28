@@ -23,10 +23,13 @@ public class Controlador {
         
         String[] dados;
         CardFactory f= CardFactory.getInstance();
+        CreditCard cartao;
         for(String texto:lista)
         {
             dados=texto.split(";");
-            cartoes.add(f.CriarCartao(dados[0], dados[1], dados[2]));
+            cartao=f.CriarCartao(dados[0], dados[1], dados[2]);
+            if (cartao!=null)
+                cartoes.add(cartao);
             
         }
     }
@@ -40,6 +43,7 @@ public class Controlador {
         List<String> amex= new ArrayList<>();
         List<String> visa= new ArrayList<>();
         List<String> master= new ArrayList<>();
+        List<String> disc= new ArrayList<>();
         String c;
         for(CreditCard cartao:cartoes) //Utilizado para carregar cada cartão em sua lista específica
         {
@@ -55,33 +59,28 @@ public class Controlador {
             }else if(cartao instanceof MasterCC)
             {
                 master.add(c);
+            }else if(cartao instanceof Discover)
+            {
+                disc.add(c);
             }
         }
-        System.out.println("America Express");
+        
+        FormataVisualizacaoCartao("America Express", amex);
+        FormataVisualizacaoCartao("Visa", visa);
+        FormataVisualizacaoCartao("MasterCard", master);
+        FormataVisualizacaoCartao("Discover", disc);        
+        
+    }
+    
+    private void FormataVisualizacaoCartao(String visu,List<String> lista)
+    {
+        System.out.println(visu);
         System.out.println("---------------");
-        for(String l:amex)
+        for(String l:lista)
         {
             System.out.println(l);
 
         }
-        
-        System.out.println("Visa");
-        System.out.println("---------------");
-        for(String l:visa)
-        {
-            System.out.println(l);
-
-        }
-        
-        System.out.println("MasterCard");
-        System.out.println("---------------");
-        for(String l:master)
-        {
-            System.out.println(l);
-
-        }
-        
-        
     }
     
     
