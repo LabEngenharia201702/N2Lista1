@@ -9,7 +9,11 @@ package ex6;
  *
  * @author diego
  */
-public abstract class Decoracao {
+public abstract class Decoracao extends Componente{
     Componente componente;
+    Decoracao(Componente componente)
+    {
+        this.componente=componente;
+    }
     
 }
