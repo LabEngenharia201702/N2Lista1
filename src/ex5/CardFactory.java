@@ -33,26 +33,33 @@ public class CardFactory extends Factory {
     CreditCard CriarCartao(String numero,String dataExpiracao,String titular)
     {
         CreditCard cartao=null;
-        char[] n=numero.toCharArray();
-        
+        char n[]=numero.toCharArray();
         /***
          * A partir do primeiro digito do cartão sabe-se à qual bandeira pertece
-         * A seguir qual primeiro digito pertence a qual cartão:
-         *      3- American Express
-         *      4- Visa
-         *      5- MasterCard
+         * A seguir como é difinido a qual bandeira pertence determinado cartão
+         *      AmericanExpress - O primeiro dígito é 5 e o segundo dígito está no intervalo [1..5].O comprimento é de 16 dígitos.
+         *      Visa - O primeiro dígito é 4. O comprimento é 13 ou 16 dígitos.
+         *      MasterCard - O primeiro dígito é 5 e o segundo dígito está no intervalo [1..5].O comprimento é de 16 dígitos.
+         *      Discover - Os primeiros quatro dígitos são 6011. O comprimento é 16 dígitos.
+
          */
-        switch(n[0])
+        int digito2;
+        if((numero.substring(0,4).equals("6014")) &&(numero.length()==16))// Discover
         {
-            case '3':
-                cartao=new AmExCC(numero, dataExpiracao, titular);
-                break;
-            case '4':
-                cartao=new VisaCC(numero, dataExpiracao, titular);
-                break;
-            case '5':
-                cartao=new MasterCC(numero, dataExpiracao, titular);
-                break;
+            cartao = new Discover(numero, dataExpiracao, titular);
+        }
+        if(n[0]=='3' &&((n[1]=='4') || (n[1]=='7')) && numero.length()==15) //American Express
+        {
+            cartao=new AmExCC(numero, dataExpiracao, titular);
+        }
+        if(n[0]=='4' &&(numero.length()==13 || numero.length()==16))//Visa
+        {
+            cartao=new VisaCC(numero, dataExpiracao, titular);
+        }
+        digito2=Integer.parseInt(n[1]+"");
+        if(numero.length()==16 &&(n[0]=='5' &&(digito2>0 && digito2<6))) //MasterCard
+        {
+            cartao=new MasterCC(numero, dataExpiracao, titular);
         }
         return cartao;
     }
