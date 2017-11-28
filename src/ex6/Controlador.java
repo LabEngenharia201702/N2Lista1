@@ -46,8 +46,10 @@ public class Controlador {
     
     void VisualizarTickets()
     {
+        String separador="---------------------------------------";
         for(Componente c: componentes)
         {
+            System.out.println(separador);
             Componente n=c;
             Rodape rodape;
             Cabecalho cabecalho;
@@ -80,6 +82,7 @@ public class Controlador {
                 System.out.println("Rodape: "+rodape.getTexto());
             }
         }
+        System.out.println(separador);
     }
     /***
      * Mostra o menu das opcoes disponíveis
