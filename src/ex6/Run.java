@@ -30,8 +30,10 @@ public class Run {
             switch(opcao)
             {
                 case 1:
+                    c.CriarTicket();
                     break;
                 case 2:
+                    c.VisualizarTickets();
                     break;
                 case 0:
                     continuar=false;
@@ -48,13 +50,11 @@ public class Run {
      */
     public static int PedirDigitacaoUsuario()
     {
+        int opcao;
         Scanner scanner = new Scanner(System.in);
         String entrada;
-        int opcao=-1;
+        opcao = -1;
         boolean opcaoInvalida=true;
-        
-        
-        
         while(opcaoInvalida)
         {
             entrada=scanner.next();
@@ -66,19 +66,19 @@ public class Run {
             {
                 opcao=-1;
             }
-            
+
             if(opcao>=0 && opcao<=2)// Verifica se o que foi digitado é válido
             {
                 opcaoInvalida=false;
-                
+
             }else
             {
                 opcaoInvalida=true;
                 System.out.print("Opção inválida,por favor digite novamente: ");
             }
-                
+
         }
-        
+
         return opcao;
     }
     
