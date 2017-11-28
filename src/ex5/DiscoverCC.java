@@ -9,9 +9,9 @@ package ex5;
  *
  * @author diego
  */
-public class Discover extends CreditCard{
+public class DiscoverCC extends CreditCard{
     
-    public Discover(String numero, String dataExpiracao, String titular) {
+    public DiscoverCC(String numero, String dataExpiracao, String titular) {
         super(numero, dataExpiracao, titular);
     }
     

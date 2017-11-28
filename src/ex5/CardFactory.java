@@ -46,7 +46,7 @@ public class CardFactory extends Factory {
         int digito2;
         if((numero.substring(0,4).equals("6014")) &&(numero.length()==16))// Discover
         {
-            cartao = new Discover(numero, dataExpiracao, titular);
+            cartao = new DiscoverCC(numero, dataExpiracao, titular);
         }
         if(n[0]=='3' &&((n[1]=='4') || (n[1]=='7')) && numero.length()==15) //American Express
         {

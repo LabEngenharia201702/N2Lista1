@@ -59,7 +59,7 @@ public class Controlador {
             }else if(cartao instanceof MasterCC)
             {
                 master.add(c);
-            }else if(cartao instanceof Discover)
+            }else if(cartao instanceof DiscoverCC)
             {
                 disc.add(c);
             }
